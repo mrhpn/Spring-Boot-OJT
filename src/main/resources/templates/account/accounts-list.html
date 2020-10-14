@@ -21,15 +21,30 @@ xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 </head>
 <body>
 	<h2>Accounts</h2>
+	<button onclick="location.href='/register'">Add New</button>
+	<br><br>
 	<table style="width:20%">
-		<tr>
-			<th>No</th>
-			<th>Name</th>
-		</tr>
-		<tr th:each="row, rowStat: ${accounts}">
-			<td th:text="${rowStat.count}">No</td>
-			<td th:text="${row}">Name</td>
-		</tr>
+		<thead>
+			<tr>
+				<th>No</th>
+				<th>Name</th>
+				<th>Role</th>
+				<th colspan="2">Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="dto, index: ${accounts}">
+				<td th:text="${index.count}">No</td>
+				<td th:text="${dto.name}">Name</td>
+				<td th:text="${dto.role}">Role</td>
+				<td>
+					<a th:href="@{'/accountUpdate/' + ${dto.id}}">Update</a>
+				</td>
+				<td>
+					<a th:href="@{'/accountDelete/' + ${dto.id}}">Delete</a>
+				</td>
+			</tr>
+		</tbody>
 	</table>
 </body>
 </html>
