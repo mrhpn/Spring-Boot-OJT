@@ -3,44 +3,22 @@ package gic.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import dto.AccountDTO;
 
 @Controller
-@RequestMapping("/")
-public class AccountController {
-	
-	@RequestMapping(value="/register", method=RequestMethod.GET)
-	public String init(Model model) {
-		model.addAttribute("accountDTO", new AccountDTO());
-		return "account/account";
-	}
-	
-	@RequestMapping(value="/accountRegister", params="register", method=RequestMethod.GET)
-	public String register(Model model, @Valid AccountDTO accountDTO, BindingResult result) {
-		if (result.hasErrors()) {
-			model.addAttribute(
-					"errorMessage", 
-					"<p style='color:red'>Possible Reasons:"
-					+ "<br/>Name and Role are all required!"
-					+ "<br/>Name must be between 5 and 20 of length.</p>");
-			return "account/account";
-		}
-		
-		return "redirect:/accounts";
-	}
+public class AccountListController {
 	
 	@RequestMapping(value="/accounts", method=RequestMethod.GET)
-	public String getAll(Model model) {
+	public String getAccounts(Model model, @RequestParam("message")String message) {
 		List<AccountDTO> accounts = getList();
 		model.addAttribute("accounts", accounts);
+		model.addAttribute("message", message);
 		
 		return "account/accounts-list";
 	}
@@ -63,5 +41,4 @@ public class AccountController {
 		
 		return result;
 	}
-	
 }

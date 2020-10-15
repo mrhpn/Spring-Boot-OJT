@@ -43,6 +43,7 @@ buildscript {
 		compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 		compile('org.springframework.boot:spring-boot-starter-web')
 		testCompile('org.springframework.boot:spring-boot-starter-test')
+		compileOnly('org.projectlombok:lombok:1.16.10')
 	}	
 		
 	tasks.withType(FindBugs) {	
