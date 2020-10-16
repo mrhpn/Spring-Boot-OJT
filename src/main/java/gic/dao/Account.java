@@ -1,4 +1,4 @@
-package dao;
+package gic.dao;
 
 import java.util.ArrayList;
 import java.util.List;

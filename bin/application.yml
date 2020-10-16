@@ -1,3 +1,11 @@
+spring:
+#RDS
+ datasource:
+   url: jdbc:oracle:thin:@localhost:1521/XE
+   username: ojtadmin
+   password: admin
+   driverClassName: oracle.jdbc.OracleDriver
+
 #Server
 server:
    port: 9090
