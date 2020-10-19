@@ -19,4 +19,8 @@ public class AccountService {
 	public List<AccountDTO> getAccountList() {
 		return dao.getAccountList();
 	}
+	
+	public void register(AccountDTO accountDto) {
+		dao.register(accountDto);
+	}
 }

@@ -17,4 +17,8 @@ public class AccountDao {
 	public List<AccountDTO> getAccountList() {
 		return mapper.getAccountList();
 	}
+	
+	public void register(AccountDTO accountDto) {
+		mapper.register(accountDto);
+	}
 }

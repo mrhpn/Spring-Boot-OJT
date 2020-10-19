@@ -17,6 +17,9 @@ public class AccountDTO implements Serializable {
 	@Size(max=20)
 	@Size(min=5)
 	private String name;
-	private String role;
+	@NotEmpty
+	@Size(max=20)
+	@Size(min=8)
 	private String password;
+	private String role;
 }
