@@ -1,5 +1,7 @@
 package gic.controller;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -37,6 +39,7 @@ public class AccountRegisterController {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("page", "Create Account");
 			
+			// Server-Side Error Handling
 			List<FieldError> errors = bindingResult.getFieldErrors();
 			
 			for (FieldError e: errors) {
@@ -51,9 +54,33 @@ public class AccountRegisterController {
 			return "account/account";
 		}
 		
-		redirectAttr.addAttribute("message", "New account has been successfully created.");
-		System.out.println(accountDTO);
+		// Hashing password
+		String hashedPassword = generateHash(accountDTO.getPassword());
+		accountDTO.setPassword(hashedPassword);
 		service.register(accountDTO);
+		
+		redirectAttr.addAttribute("message", "New account has been successfully created.");
 		return "redirect:/accounts";
+	}
+	
+	private static String generateHash(String input) {
+		StringBuilder hash = new StringBuilder();
+
+		try {
+			MessageDigest sha = MessageDigest.getInstance("SHA-1");
+			byte[] hashedBytes = sha.digest(input.getBytes());
+			char[] digits = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+					'a', 'b', 'c', 'd', 'e', 'f' };
+			
+			for (int i = 0; i < hashedBytes.length; i++) {
+				byte b = hashedBytes[i];
+				hash.append(digits[(b & 0xf0) >> 4]);
+				hash.append(digits[b & 0x0f]);
+			}
+		} catch (NoSuchAlgorithmException e) {
+			System.out.println(e.getMessage());
+		}
+
+		return hash.toString();
 	}
 }
