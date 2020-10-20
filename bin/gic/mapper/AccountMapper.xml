@@ -13,5 +13,19 @@
 			#{password}
 		)
 	</insert>
+	
+	<select id="getAccount" resultType="dto.AccountDTO" parameterType="dto.AccountDTO">
+		SELECT * FROM account WHERE id = #{accountId}
+	</select>
+	
+	<update id="update" parameterType="dto.AccountDTO">
+		UPDATE account 
+			SET name = #{name},
+				role = #{role}
+			WHERE id = #{id}
+	</update>
 
+	<delete id="delete" parameterType="int">
+		DELETE FROM account WHERE id = #{id}
+	</delete>
 </mapper>

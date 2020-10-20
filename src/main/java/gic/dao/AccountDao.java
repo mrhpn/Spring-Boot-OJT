@@ -21,4 +21,16 @@ public class AccountDao {
 	public void register(AccountDTO accountDto) {
 		mapper.register(accountDto);
 	}
+	
+	public AccountDTO edit(int accountId) {
+		return mapper.getAccount(accountId);
+	}
+	
+	public void update(AccountDTO accountDto) {
+		mapper.update(accountDto);
+	}
+
+	public void delete(int accountId) {
+		mapper.delete(accountId);
+	}
 }

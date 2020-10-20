@@ -21,6 +21,7 @@ public class AccountListController {
 	@RequestMapping(value="/accounts", method=RequestMethod.GET)
 	public String getAccounts(Model model, @RequestParam("message")String message) {
 		List<AccountDTO> accounts = service.getAccountList();
+		
 		model.addAttribute("accounts", accounts);
 		model.addAttribute("message", message);
 		

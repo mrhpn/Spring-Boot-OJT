@@ -13,13 +13,14 @@ xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 	<div class="container mx-auto">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-6  column col-sm-offset-0 col-md-offset-2 col-lg-offset-3">
-				<h2 th:text="${page}"></h2>
+				<h2>Create Account</h2>
 				<form id="form" action="accountRegister" th:object="${accountDTO}" method="GET" data-parsley-validate>
 					
 					<!-- Name --> 
 			  		<div class="form-group">
 			    		<label for="name">Name</label>
-					    <input 	th:field="*{name}" type="text" class="form-control" id="name" placeholder="Mr.Htet" required 
+					    <input 	th:field="*{name}" type="text" class="form-control" 
+					    		id="name" placeholder="Mr.Htet" required 
 					    		data-parsley-errors-container="#invalidNameField"
 					    		data-parsley-trigger-after-failure="focusout">
 					    <div class="text-danger" id="invalidNameField" th:text="${nameError}"></div>
@@ -29,8 +30,10 @@ xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 			  		<div id="invalidNameField"></div>
 					<div class="form-group">
 					    <label for="password">Password</label>
-					    <input th:field="*{password}" type="password" class="form-control" id="password" placeholder="*****" aria-describedby="passwordHelp" 
-					    		required data-parsley-errors-container="#invalidPasswordField" data-parsley-trigger-after-failure="focusout">
+					    <input th:field="*{password}" type="password" class="form-control" 
+					    		id="password" placeholder="*****" aria-describedby="passwordHelp" 
+					    		required data-parsley-errors-container="#invalidPasswordField" 
+					    		data-parsley-trigger-after-failure="focusout">
 					    <div class="text-danger" id="invalidPasswordField" th:text="${passwordError}"></div>
 					</div>
 					
@@ -41,7 +44,7 @@ xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 				        	<option th:each="role: ${roles}" th:value="${role}" th:text="${role}"></option>
 				      	</select>
 			    	</div>
-			  		<input type="submit" id="btnSubmit" name="register" class="btn btn-primary" value="Register" />
+			  		<input type="submit" id="btnSubmit" name="register" class="btn btn-primary" value="Submit" />
 				</form>
 			</div>
 		</div>

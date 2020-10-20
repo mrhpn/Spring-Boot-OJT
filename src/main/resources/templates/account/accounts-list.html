@@ -32,12 +32,13 @@ xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 				<td th:text="${dto.name}"></td>
 				<td th:text="${dto.role}"></td>
 				<td>
-					<a th:href="@{'/update/' + ${dto.id}}" class="btn btn-sm btn-warning">Update</a>
-					<a th:href="@{'/update/' + ${dto.id}}" class="btn btn-sm btn-danger">Delete</a>
+					<a th:href="@{'/edit/' + ${dto.id}}" class="btn btn-sm btn-warning">Update</a>
+					<a th:href="@{'/delete/' + ${dto.id}}" class="btn btn-sm btn-danger">Delete</a>
 				</td>
 			</tr>
 		  </tbody>
 		</table>
 	</div>
+	
 </body>
 </html>

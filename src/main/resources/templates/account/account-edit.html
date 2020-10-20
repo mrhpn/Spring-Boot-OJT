@@ -13,8 +13,8 @@ xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 	<div class="container mx-auto">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-8 col-lg-6  column col-sm-offset-0 col-md-offset-2 col-lg-offset-3">
-				<h2>Create Account</h2>
-				<form id="form" action="accountRegister" th:object="${accountDTO}" method="GET" data-parsley-validate>
+				<h2>Update Your Account </h2>
+				<form id="update-form" action="/accountUpdate" th:object="${accountDTO}" method="POST" data-parsley-validate>
 					
 					<!-- Name --> 
 			  		<div class="form-group">
@@ -22,20 +22,11 @@ xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 					    <input 	th:field="*{name}" type="text" class="form-control" 
 					    		id="name" placeholder="Mr.Htet" required 
 					    		data-parsley-errors-container="#invalidNameField"
-					    		data-parsley-trigger-after-failure="focusout">
+					    		data-parsley-trigger-after-failure="focusout" style="width: 25% !important;">
 					    <div class="text-danger" id="invalidNameField" th:text="${nameError}"></div>
 			  		</div>
 			  		
-			  		<!-- Password -->
-			  		<div id="invalidNameField"></div>
-					<div class="form-group">
-					    <label for="password">Password</label>
-					    <input th:field="*{password}" type="password" class="form-control" 
-					    		id="password" placeholder="*****" aria-describedby="passwordHelp" 
-					    		required data-parsley-errors-container="#invalidPasswordField" 
-					    		data-parsley-trigger-after-failure="focusout">
-					    <div class="text-danger" id="invalidPasswordField" th:text="${passwordError}"></div>
-					</div>
+			  		<input type="hidden" th:field="*{id}" th:value="*{id}"/>
 					
 					<!-- Role -->
 					<div class="form-group w-25">
@@ -44,11 +35,11 @@ xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 				        	<option th:each="role: ${roles}" th:value="${role}" th:text="${role}"></option>
 				      	</select>
 			    	</div>
-			  		<input type="submit" id="btnSubmit" name="register" class="btn btn-primary" value="Submit" />
+			  		<input type="submit" id="btnSubmit" name="update" class="btn btn-primary" value="Submit" />
 				</form>
 			</div>
 		</div>
 	</div>
-	<script>$('#form').parsley();</script>
+	<script>$('#update-form').parsley();</script>
 </body>
 </html>

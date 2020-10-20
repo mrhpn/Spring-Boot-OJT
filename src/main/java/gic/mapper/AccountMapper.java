@@ -12,4 +12,10 @@ public interface AccountMapper {
 	public List<AccountDTO> getAccountList();
 	
 	public void register(AccountDTO accountDto);
+	
+	public AccountDTO getAccount(int accountId);
+	
+	public void update(AccountDTO accountDto);
+
+	public void delete(int accountId);
 }

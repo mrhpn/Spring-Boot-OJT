@@ -23,4 +23,16 @@ public class AccountService {
 	public void register(AccountDTO accountDto) {
 		dao.register(accountDto);
 	}
+	
+	public AccountDTO edit(int accountId) {
+		return dao.edit(accountId);
+	}
+	
+	public void update(AccountDTO accountDto) {
+		dao.update(accountDto);
+	}
+
+	public void delete(int accountId) {
+		dao.delete(accountId);
+	}
 }
