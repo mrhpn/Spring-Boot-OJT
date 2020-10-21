@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import dto.AccountDTO;
 import gic.dao.Account;
+import gic.dto.AccountDto;
 import gic.service.AccountService;
 
 @Controller
@@ -27,7 +27,7 @@ public class AccountRegisterController {
 	
 	@RequestMapping(value="/create", method=RequestMethod.GET)
 	public String init(Model model) {
-		model.addAttribute(new AccountDTO());
+		model.addAttribute(new AccountDto());
 		model.addAttribute("page", "Register Account");
 		model.addAttribute("roles", new Account().getRoles());
 		
@@ -35,7 +35,7 @@ public class AccountRegisterController {
 	}
 	
 	@RequestMapping(value="/accountRegister", params="register", method=RequestMethod.GET)
-	public String register(Model model, @Valid AccountDTO accountDTO, BindingResult bindingResult, RedirectAttributes redirectAttr) {
+	public String register(Model model, @Valid AccountDto accountDTO, BindingResult bindingResult, RedirectAttributes redirectAttr) {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("page", "Create Account");
 			

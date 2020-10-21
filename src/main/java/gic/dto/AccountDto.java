@@ -1,4 +1,4 @@
-package dto;
+package gic.dto;
 
 import java.io.Serializable;
 
@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-public class AccountDTO implements Serializable {
+public class AccountDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;

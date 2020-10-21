@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import dto.AccountDTO;
+import gic.dto.AccountDto;
 import gic.mapper.AccountMapper;
 
 @Repository
@@ -14,19 +14,19 @@ public class AccountDao {
 	@Autowired
 	private AccountMapper mapper;
 	
-	public List<AccountDTO> getAccountList() {
+	public List<AccountDto> getAccountList() {
 		return mapper.getAccountList();
 	}
 	
-	public void register(AccountDTO accountDto) {
+	public void register(AccountDto accountDto) {
 		mapper.register(accountDto);
 	}
 	
-	public AccountDTO edit(int accountId) {
+	public AccountDto edit(int accountId) {
 		return mapper.getAccount(accountId);
 	}
 	
-	public void update(AccountDTO accountDto) {
+	public void update(AccountDto accountDto) {
 		mapper.update(accountDto);
 	}
 

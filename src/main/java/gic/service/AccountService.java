@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import dto.AccountDTO;
 import gic.dao.AccountDao;
+import gic.dto.AccountDto;
 
 @Service
 @Transactional
@@ -16,19 +16,19 @@ public class AccountService {
 	@Autowired
 	private AccountDao dao;
 	
-	public List<AccountDTO> getAccountList() {
+	public List<AccountDto> getAccountList() {
 		return dao.getAccountList();
 	}
 	
-	public void register(AccountDTO accountDto) {
+	public void register(AccountDto accountDto) {
 		dao.register(accountDto);
 	}
 	
-	public AccountDTO edit(int accountId) {
+	public AccountDto edit(int accountId) {
 		return dao.edit(accountId);
 	}
 	
-	public void update(AccountDTO accountDto) {
+	public void update(AccountDto accountDto) {
 		dao.update(accountDto);
 	}
 

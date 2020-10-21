@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="gic.mapper.AccountMapper">
 
-	<select id="getAccountList" resultType="dto.AccountDTO">
+	<select id="getAccountList" resultType="gic.dto.AccountDto">
 		SELECT * FROM account
 	</select>
 	
-	<insert id="register" parameterType="dto.AccountDTO">
+	<insert id="register" parameterType="gic.dto.AccountDto">
 		INSERT INTO account(name, role, password) VALUES (
 			#{name},
 			#{role},
@@ -14,11 +14,11 @@
 		)
 	</insert>
 	
-	<select id="getAccount" resultType="dto.AccountDTO" parameterType="dto.AccountDTO">
+	<select id="getAccount" resultType="gic.dto.AccountDto" parameterType="gic.dto.AccountDto">
 		SELECT * FROM account WHERE id = #{accountId}
 	</select>
 	
-	<update id="update" parameterType="dto.AccountDTO">
+	<update id="update" parameterType="gic.dto.AccountDto">
 		UPDATE account 
 			SET name = #{name},
 				role = #{role}

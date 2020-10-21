@@ -47,6 +47,7 @@ buildscript {
 		compile('org.springframework.boot:spring-boot-starter-jdbc')
 		compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.0.1")
 		compile files('lib/ojdbc7-12.1.0.jar');
+		compile('org.springframework.boot:spring-boot-starter-security')
 	}	
 		
 	tasks.withType(FindBugs) {	

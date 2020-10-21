@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import dto.AccountDTO;
 import gic.dao.Account;
+import gic.dto.AccountDto;
 import gic.service.AccountService;
 
 @Controller
@@ -24,7 +24,7 @@ public class AccountUpdateController {
 
 	@RequestMapping(value="/edit/{accountId}", method=RequestMethod.GET)
 	public String edit(Model model, @PathVariable("accountId")Integer accountId) {	
-		AccountDTO account = service.edit(accountId);
+		AccountDto account = service.edit(accountId);
 		
 		model.addAttribute("accountDTO", account);
 		model.addAttribute("roles", new Account().getRoles());
@@ -33,7 +33,7 @@ public class AccountUpdateController {
 	}
 	
 	@RequestMapping(value="accountUpdate", method=RequestMethod.POST)
-	public String updateData(Model model, @Valid AccountDTO accountDTO, BindingResult bindingResult, RedirectAttributes redirectAttr) {
+	public String updateData(Model model, @Valid AccountDto accountDTO, BindingResult bindingResult, RedirectAttributes redirectAttr) {
 		if (bindingResult.hasErrors()) {
 			FieldError error = bindingResult.getFieldError();
 			if (("name").equals(error.getField()))

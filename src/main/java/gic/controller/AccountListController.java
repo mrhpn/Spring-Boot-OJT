@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import dto.AccountDTO;
+import gic.dto.AccountDto;
 import gic.service.AccountService;
 
 @Controller
@@ -20,7 +20,7 @@ public class AccountListController {
 	
 	@RequestMapping(value="/accounts", method=RequestMethod.GET)
 	public String getAccounts(Model model, @RequestParam("message")String message) {
-		List<AccountDTO> accounts = service.getAccountList();
+		List<AccountDto> accounts = service.getAccountList();
 		
 		model.addAttribute("accounts", accounts);
 		model.addAttribute("message", message);
