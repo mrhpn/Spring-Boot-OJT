@@ -62,16 +62,33 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry config = http.authorizeRequests();
 
-		config.antMatchers("/css/**", "/js/**", "/login", "/loginError", "/logOut").permitAll()
-		.antMatchers("/gic/**").hasAnyRole("ADMIN", "USER").anyRequest().authenticated();
+		config
+			.antMatchers("/css/**", "/js/**", "/login", "/loginError", "/logOut")
+			.permitAll()
+			.antMatchers("/gic/**")
+			.hasAnyRole("ADMIN", "USER")
+			.anyRequest()
+			.authenticated();
 
-		http.formLogin().loginProcessingUrl("/").loginPage("/login").failureHandler(loginFailureHandler).defaultSuccessUrl("/")
-				.usernameParameter("name").passwordParameter("password");
+		http
+			.formLogin()
+			.loginProcessingUrl("/")
+			.loginPage("/login")
+			.failureHandler(loginFailureHandler)
+			.defaultSuccessUrl("/")
+			.usernameParameter("name")
+			.passwordParameter("password");
 
-		http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logOut")).logoutSuccessUrl("/login")
-				.logoutSuccessHandler(logoutHandler);
+		http
+			.logout()
+			.logoutRequestMatcher(new AntPathRequestMatcher("/logOut"))
+			.logoutSuccessUrl("/login")
+			.logoutSuccessHandler(logoutHandler);
 
-		http.sessionManagement().maximumSessions(1).expiredUrl("/logOut");
+		http
+			.sessionManagement()
+			.maximumSessions(1)
+			.expiredUrl("/logOut");
 		
 		String csrfRegx = "/|/login|";
 

@@ -5,6 +5,7 @@ xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 	<meta charset="ISO-8859-1">
 	<title>Account Lists</title>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 	<script type="text/javascript" th:src="@{/js/jquery-2.1.4.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/common.js}"></script>
 	<script type="text/javascript" th:src="@{/js/parsley.min.js}"></script>
@@ -12,7 +13,9 @@ xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 <body>
 	<div class="container mx-auto">
 		<h2>Accounts</h2>
-		<div class="text-success" th:text="${message}"></div>
+		<div class="alert alert-success d-inline" th:if="${message != null}">
+			<div th:text="${message}"></div>
+		</div>
 		<br>
 		<button class="btn btn-success" onclick="location.href='/create'">Add New</button>
 		<br><br>

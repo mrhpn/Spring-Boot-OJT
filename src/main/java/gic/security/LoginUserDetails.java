@@ -33,6 +33,7 @@ public class LoginUserDetails extends User {
 		super(user.getName(), user.getPassword(), AuthorityUtils.createAuthorityList("ROLE_" + user.getRole()));
 		userId = user.getId();
 		role = user.getRole();
+		System.out.println(user.getId() + " <---");
 	}
 
 	public boolean isSysAdmin() {
