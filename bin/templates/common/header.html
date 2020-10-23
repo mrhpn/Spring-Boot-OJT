@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ <head>
+ <meta charset="UTF-8" />
+ <meta http-equiv="X-UA-Compatible" content="IE=11"/>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+ <title>Header</title>
+ </head>
+ <body>
+ <div class="container" th:fragment="accountMenu">
+ 	<nav class="navbar m-0 p-0 bg-dark" style="background-color: #f1f1f1; border-radius: 0;">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">Internship OJT</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	      <li class="active"><a th:href="@{'/accounts'}">Home</a></li>
+	      <li><a th:href="@{'/create'}">Account Register</a></li>
+	    </ul>
+	    <ul class="nav navbar-nav navbar-right">
+	      <li><a th:href="@{'/logout'}">Logout</a></li>
+	    </ul>
+	  </div>
+	</nav>
+ </div>
+ <div th:fragment="noaccountMenu"></div>
+</body>
+</html>

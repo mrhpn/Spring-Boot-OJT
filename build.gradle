@@ -48,6 +48,8 @@ buildscript {
 		compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.0.1")
 		compile files('lib/ojdbc7-12.1.0.jar');
 		compile('org.springframework.boot:spring-boot-starter-security')
+		compile('org.thymeleaf.extras:thymeleaf-extras-springsecurity4')
+		compile group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect', version: '2.0.5'
 	}	
 		
 	tasks.withType(FindBugs) {	

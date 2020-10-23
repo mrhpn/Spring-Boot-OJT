@@ -1,47 +1,42 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
-<head>
-	<meta charset="ISO-8859-1">
-	<title>Account Lists</title>
-	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"/>
-	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
-	<script type="text/javascript" th:src="@{/js/jquery-2.1.4.min.js}"></script>
-	<script type="text/javascript" th:src="@{/js/common.js}"></script>
-	<script type="text/javascript" th:src="@{/js/parsley.min.js}"></script>
-</head>
-<body>
-	<div class="container mx-auto">
-		<h2>Accounts</h2>
-		<div class="alert alert-success d-inline" th:if="${message != null}">
-			<div th:text="${message}"></div>
-		</div>
-		<br>
-		<button class="btn btn-success" onclick="location.href='/create'">Add New</button>
-		<br><br>
-		
-		<table class="table" style="width:50%">
-		  <thead>
-		    <tr>
-		      <th scope="col">#</th>
-		      <th scope="col">Name</th>
-		      <th scope="col">Role</th>
-		      <th scope="col">Action</th>
-		    </tr>
-		  </thead>
-		  <tbody>		    
-		    <tr th:each="dto, index: ${accounts}">
-				<td th:text="${index.count}"></td>
-				<td th:text="${dto.name}"></td>
-				<td th:text="${dto.role}"></td>
-				<td>
-					<a th:href="@{'/edit/' + ${dto.id}}" class="btn btn-sm btn-warning">Update</a>
-					<a th:href="@{'/delete/' + ${dto.id}}" class="btn btn-sm btn-danger">Delete</a>
-				</td>
-			</tr>
-		  </tbody>
-		</table>
-	</div>
-	
-</body>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" 
+layout:decorator="common/layout">
+	<head>
+		<meta charset="UTF-8">
+		<title>Account Lists</title>
+		<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+	</head>
+	<body>
+		<h2 layout:fragment="title">Accounts List</h2>
+			<div layout:fragment="myContent">
+				<div class="alert alert-success d-inline" th:if="${message != null}">
+					<div th:text="${message}"></div>
+				</div>
+				<br>
+				<button class="btn btn-success" onclick="location.href='/create'">Add New</button>
+				<br><br>
+				
+				<table class="table" style="width:50%">
+				  <thead>
+				    <tr>
+				      <th scope="col">#</th>
+				      <th scope="col">Name</th>
+				      <th scope="col">Role</th>
+				      <th scope="col">Action</th>
+				    </tr>
+				  </thead>
+				  <tbody>		    
+				    <tr th:each="dto, index: ${accounts}">
+						<td th:text="${index.count}"></td>
+						<td th:text="${dto.name}"></td>
+						<td th:text="${dto.role}"></td>
+						<td>
+							<a th:href="@{'/edit/' + ${dto.id}}" class="btn btn-sm btn-warning">Update</a>
+							<a th:href="@{'/delete/' + ${dto.id}}" class="btn btn-sm btn-danger">Delete</a>
+						</td>
+					</tr>
+				  </tbody>
+				</table>
+			</div>
+	</body>
 </html>
